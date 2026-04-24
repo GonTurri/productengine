@@ -16,10 +16,10 @@ public class Order {
     @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
     private Product requestedProduct;
 
-    @Column(name = "order_date")
+    @Column(name = "order_date", nullable = false)
     private LocalDateTime orderDate = LocalDateTime.now();
 
-    @Column(name = "final_price")
+    @Column(name = "final_price", nullable = false)
     private BigDecimal finalPrice;
 
     public Order(Product requestedProduct, BigDecimal finalPrice) {
