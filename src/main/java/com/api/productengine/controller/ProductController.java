@@ -3,8 +3,8 @@ package com.api.productengine.controller;
 import com.api.productengine.dto.product.CreateProductRequestDTO;
 import com.api.productengine.dto.product.ProductResponseDTO;
 import com.api.productengine.dto.product.UpdateProductRequestDTO;
-import com.api.productengine.model.Product;
 import com.api.productengine.service.ProductService;
+import com.api.productengine.service.impl.ProductServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class ProductController {
 
     private final ProductService service;
 
-    public ProductController(ProductService service) {
+    public ProductController(ProductServiceImpl service) {
         this.service = service;
     }
 
@@ -41,7 +41,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
+    public void delete(@PathVariable("id") Long id) {
         service.delete(id);
     }
 }

@@ -3,6 +3,7 @@ package com.api.productengine.controller;
 import com.api.productengine.dto.order.OrderCreateRequestDTO;
 import com.api.productengine.dto.order.OrderResponseDTO;
 import com.api.productengine.service.OrderService;
+import com.api.productengine.service.impl.OrderServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    public OrderController(OrderService orderService) {
+    public OrderController(OrderServiceImpl orderService) {
         this.orderService = orderService;
     }
 
