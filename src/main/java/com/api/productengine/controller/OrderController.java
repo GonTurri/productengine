@@ -4,6 +4,8 @@ import com.api.productengine.dto.order.OrderCreateRequestDTO;
 import com.api.productengine.dto.order.OrderResponseDTO;
 import com.api.productengine.service.OrderService;
 import com.api.productengine.service.impl.OrderServiceImpl;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,17 +21,17 @@ public class OrderController {
     }
 
     @PostMapping
-    public OrderResponseDTO create(@RequestBody OrderCreateRequestDTO createRequest) {
-        return this.orderService.createOrder(createRequest);
+    public ResponseEntity<OrderResponseDTO> create(@RequestBody OrderCreateRequestDTO createRequest) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(this.orderService.createOrder(createRequest));
     }
 
     @GetMapping
-    public List<OrderResponseDTO> getAll(){
-        return this.orderService.findAll();
+    public ResponseEntity<List<OrderResponseDTO>> getAll(){
+        return ResponseEntity.ok(this.orderService.findAll());
     }
 
     @GetMapping("/{id}")
-    public OrderResponseDTO findById(@PathVariable("id") Long id){
-        return this.orderService.findById(id);
+    public ResponseEntity<OrderResponseDTO> findById(@PathVariable("id") Long id){
+        return ResponseEntity.ok(this.orderService.findById(id));
     }
 }
